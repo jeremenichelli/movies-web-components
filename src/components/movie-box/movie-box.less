@@ -3,15 +3,11 @@
 :host {
   line-height: 1.5;
   overflow: hidden;
-
-  &([loaded]) {
-    opacity: 1;
-  }
 }
 
 app-card {
   opacity: 0;
-  transition: opacity .25s;
+  transition: opacity .25s ease 0.15s;
 
   &[loaded] {
     opacity: 1;

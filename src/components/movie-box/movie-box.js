@@ -42,23 +42,34 @@ class MovieBox extends HTMLElement {
     collectRefs.call(this);
 
     const movieId = this.getAttribute('mid');
+    const dataFromStorage = JSON.parse(sessionStorage.getItem(movieId));
 
-    // get movie data
-    getMovie(movieId)
-      .then(data => {
-        // populate data
-        this.refs.title.textContent = data.title;
-        this.refs.tagline.textContent = data.tagline;
-        this.refs.released.textContent = data.release_date ? data.release_date.slice(0, 4) : '-';
-        this.refs.runtime.innerHTML = `${ data.runtime }&nbsp;min.`;
-        this.refs.rating.textContent = data.vote_average;
-        this.refs.overview.textContent = data.overview;
-        this.refs.image.src = BASE_POSTER_URL + data.poster_path;
+    if (dataFromStorage !== null) {
+      // get indo from local storage
+      this.renderCard(dataFromStorage);
+    } else {
+      // get movie data from database
+      getMovie(movieId)
+        .then(data => {
+          this.renderCard(data);
+          sessionStorage.setItem(movieId, JSON.stringify(data));
+        })
+        .catch(error => console.log(error));
+    }
+  }
 
-        // make box visible
-        this.refs.card.setAttribute('loaded', '');
-      })
-      .catch(error => console.log(error));
+  renderCard(data) {
+    // populate data
+    this.refs.title.textContent = data.title;
+    this.refs.tagline.textContent = data.tagline;
+    this.refs.released.textContent = data.release_date ? data.release_date.slice(0, 4) : '-';
+    this.refs.runtime.innerHTML = `${ data.runtime }&nbsp;min.`;
+    this.refs.rating.textContent = data.vote_average;
+    this.refs.overview.textContent = data.overview;
+    this.refs.image.src = BASE_POSTER_URL + data.poster_path;
+
+    // make box visible
+    this.refs.card.setAttribute('loaded', '');
   }
 }
 
