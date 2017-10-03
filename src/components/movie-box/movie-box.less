@@ -1,0 +1,99 @@
+@import '../../styles/_variables.less';
+
+:host {
+  line-height: 1.5;
+  overflow: hidden;
+
+  &([loaded]) {
+    opacity: 1;
+  }
+}
+
+app-card {
+  opacity: 0;
+  transition: opacity .25s;
+
+  &[loaded] {
+    opacity: 1;
+  }
+}
+
+.movie__title {
+  font-size: 1.45em;
+  line-height: 1;
+  margin: 0;
+}
+
+.movie__tagline {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0.5em 0 1em;
+}
+
+.movie__data {
+  clear: both;
+
+  dt {
+    color: @accent;
+    display: inline-block;
+    .label();
+  }
+
+  dd {
+    display: inline;
+    margin: 0 0 0 5px;
+
+    &:after {
+      color: @secondary;
+      content: '/';
+      font-weight: 400;
+      margin: 0 5px 0 8px;
+    }
+
+    &:last-child {
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.movie__plot__label {
+  .label();
+  color: @secondary;
+  margin: 0 5px 0 0;
+}
+
+.movie__plot {
+  margin-top: -.25em;
+}
+
+.movie__thumb {
+  background-color: @secondary;
+  float: left;
+  height: 150.27px;
+  margin: 0 25px 10px 0;
+  width: 100px;
+}
+
+// BIG PHONES AND TABLETS
+@media (min-width: @x-medium) {
+  .movie__thumb {
+    height: 225.39px;
+    width: 150px;
+  }
+
+  .movie__plot {
+    font-size: .9em;
+  }
+}
+
+// DESKTOP
+@media (min-width: @x-desktop) {
+  .movie__thumb {
+    height: 278px;
+    width: 185px;
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../styles/_variables.less';
+
+:host {
+  background-color: @background-light;
+  display: block;
+  margin: auto;
+  max-width: 640px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+:host([hollow]) {
+  background-color: transparent;
+}
+
+// BIG PHONES AND TABLETS
+@media (min-width: @x-medium) {
+
+}
+
+// DESKTOP
+@media (min-width: @x-desktop) {
+  :host {
+    padding: 35px;
+  }
+}

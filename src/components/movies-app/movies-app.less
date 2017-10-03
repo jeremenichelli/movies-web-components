@@ -1,0 +1,26 @@
+@import '../../styles/_variables.less';
+
+:host {
+  display: block;
+  padding: 0 1em 2em;
+}
+
+.back {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+// BIG PHONES AND TABLETS
+@media (min-width: @x-medium) {
+
+  :host {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+// DESKTOP
+@media (min-width: @x-desktop) {
+
+}

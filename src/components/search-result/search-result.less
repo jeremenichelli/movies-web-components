@@ -1,0 +1,29 @@
+@import '../../styles/_variables.less';
+
+:host {
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: @secondary;
+  cursor: pointer;
+  display: block;
+  padding: 30px 0;
+}
+
+.search__result_title {
+  line-height: 1.2em;
+  margin: 0;
+  position: relative;
+  padding: 0 35px 0 0;
+
+  app-icon {
+    color: @accent;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.search__result_year {
+  line-height: 1.2em;
+  margin: 0;
+}
