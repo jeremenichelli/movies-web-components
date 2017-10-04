@@ -17,7 +17,7 @@ template.innerHTML = `
   <search-box></search-box>
   <p class="${ styles.locals.message }" ref="message"></p>
   <app-card hollow>
-    <ul class="${ styles.locals.search__results }" ref="results"></ul>
+    <div ref="results"></div>
   </app-card>
   <app-card hollow>
     <a hidden href="#" class="${ styles.locals.more }" ref="more">Load more results</a>

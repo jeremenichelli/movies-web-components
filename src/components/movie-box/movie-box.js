@@ -59,6 +59,10 @@ class MovieBox extends HTMLElement {
       .catch(error => console.log(error));
   }
 
+  disconnectedCallback() {
+    emitter.emit('onloadingended', null);
+  }
+
   renderCard(data) {
     // populate data
     this.refs.title.textContent = data.title;
