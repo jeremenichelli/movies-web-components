@@ -15,12 +15,10 @@
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "build": "NODE_ENV=production webpack -p",
+    "build": "NODE_ENV=production webpack",
     "start": "NODE_ENV=development webpack-dev-server --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
   "repository": {
     "type": "git",
@@ -30,6 +28,12 @@
     "web",
     "app",
     "components"
+  ],
+  "browserslist": [
+    "Firefox >= 45",
+    "Chrome >= 49",
+    "Safari >= 9",
+    "Edge >= 12"
   ],
   "author": "Jeremias Menichelli",
   "license": "Apache-2.0",

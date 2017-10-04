@@ -1,0 +1,18 @@
+@import '../../styles/_variables.less';
+
+.message {
+  text-align: center;
+}
+
+.more {
+  color: @accent;
+  display: block;
+  font-size: 0.9em;
+  text-align: center;
+  text-decoration: none;
+  .label();
+
+  &[hidden] {
+    display: none;
+  }
+}
