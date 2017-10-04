@@ -1,4 +1,5 @@
 import router from '../../util/router.js';
+import emitter from '../../util/emitter.js';
 import collectRefs from '../../util/collectRefs.js';
 import emptyNode from '../../util/emptyNode.js';
 
@@ -6,7 +7,7 @@ import emptyNode from '../../util/emptyNode.js';
 import '../app-icon/app-icon.js';
 import '../app-card/app-card.js';
 import '../loading-bar/loading-bar.js';
-import '../search-result/search-result.js';
+import '../search-view/search-view.js';
 import '../movie-box/movie-box.js';
 
 // styles
@@ -21,7 +22,7 @@ globalStyleTag.textContent = globalStyles.toString();
 
 const template = `
   <style>${ appStyles.toString() }</style>
-  <loading-bar></loading-bar>
+  <loading-bar ref="loadingBar"></loading-bar>
   <header>
     <h1>Movies</h1>
     <div ref="subtitle"></div>
@@ -76,18 +77,38 @@ class MoviesApp extends HTMLElement {
 
     // resolve current url
     router.resolve();
+
+    // listen to events
+    emitter.on('onloadingstarted', () => {
+      this.refs.loadingBar.visible = true;
+    });
+
+    emitter.on('onloadingended', () => {
+      this.refs.loadingBar.visible = false;
+    });
   }
 
   renderHome() {
     emptyNode(this.refs.subtitle);
+    emptyNode(this.refs.view);
+
+    const searchView = document.createElement('search-view');
+
     this.refs.subtitle.insertBefore(this.homeSubtitle, null);
-    this.refs.view.innerHTML = `<app-card hollow><search-result title="Batman" year="1989" mid="268"></search-result></app-card>`;
+    this.refs.view.appendChild(searchView);
   }
 
   renderMovie(id) {
+    this.refs.loadingBar.visible = true;
+
     emptyNode(this.refs.subtitle);
+    emptyNode(this.refs.view);
+
+    const movieElement = document.createElement('movie-box');
+    movieElement.setAttribute('mid', id);
+
     this.refs.subtitle.insertBefore(this.movieSubtitle, null);
-    this.refs.view.innerHTML = `<movie-box mid="${ id }"></movie-box>`;
+    this.refs.view.insertBefore(movieElement, null);
   }
 }
 

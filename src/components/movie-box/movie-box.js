@@ -1,4 +1,5 @@
 import collectRefs from '../../util/collectRefs.js';
+import emitter from '../../util/emitter.js';
 import getMovie from '../../services/movie.js';
 
 // styles
@@ -44,18 +45,18 @@ class MovieBox extends HTMLElement {
     const movieId = this.getAttribute('mid');
     const dataFromStorage = JSON.parse(sessionStorage.getItem(movieId));
 
+    // restore from local storage if available
     if (dataFromStorage !== null) {
-      // get indo from local storage
-      this.renderCard(dataFromStorage);
-    } else {
-      // get movie data from database
-      getMovie(movieId)
-        .then(data => {
-          this.renderCard(data);
-          sessionStorage.setItem(movieId, JSON.stringify(data));
-        })
-        .catch(error => console.log(error));
+      return this.renderCard(dataFromStorage);
     }
+
+    // get movie data from database
+    getMovie(movieId)
+      .then(data => {
+        this.renderCard(data);
+        sessionStorage.setItem(movieId, JSON.stringify(data));
+      })
+      .catch(error => console.log(error));
   }
 
   renderCard(data) {
@@ -70,6 +71,11 @@ class MovieBox extends HTMLElement {
 
     // make box visible
     this.refs.card.setAttribute('loaded', '');
+
+    // hide loading bar
+    setTimeout(() => {
+      emitter.emit('onloadingended', null);
+    }, 100);
   }
 }
 

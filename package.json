@@ -10,14 +10,17 @@
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "navigo": "^5.3.1",
+    "tiny-emitter": "^2.0.2",
     "to-string-loader": "^1.1.5",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {},
   "scripts": {
+    "build": "NODE_ENV=production webpack -p",
     "start": "NODE_ENV=development webpack-dev-server --history-api-fallback",
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
   "repository": {
     "type": "git",

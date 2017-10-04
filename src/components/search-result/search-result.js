@@ -8,11 +8,13 @@ const template = document.createElement('template');
 
 template.innerHTML = `
   <style>${ styles.toString() }</style>
-  <h3 class="${ styles.locals.search__result_title }">
-    <span ref="title">{ this.props.data.title }</span>
-    <app-icon type="action"></app-icon>
-  </h3>
-  <p ref="year" class="${ styles.locals.search__result_year }"></p>
+  <app-card hollow>
+    <h3 class="${ styles.locals.search__result_title }">
+      <span ref="title"></span>
+      <app-icon type="action"></app-icon>
+    </h3>
+    <p ref="year" class="${ styles.locals.search__result_year }"></p>
+  </app-card>
 `;
 
 class SearchResult extends HTMLElement {

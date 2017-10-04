@@ -15,6 +15,18 @@ class LoadingBar extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
+
+  set visible(value) {
+    if (Boolean(value) === true) {
+      this.setAttribute('visible', '');
+    } else {
+      this.removeAttribute('visible');
+    }
+  }
+
+  get visible() {
+    return this.hasAttribute('visible');
+  }
 }
 
 window.customElements.define('loading-bar', LoadingBar);
