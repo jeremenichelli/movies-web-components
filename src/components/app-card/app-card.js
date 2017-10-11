@@ -1,4 +1,4 @@
-import collectRefs from '../../util/collectRefs.js';
+import collectRefs from 'web-component-refs';
 
 // styles
 import styles from './app-card.less';

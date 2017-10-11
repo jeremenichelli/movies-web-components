@@ -1,6 +1,6 @@
 import router from '../../util/router.js';
 import emitter from '../../util/emitter.js';
-import collectRefs from '../../util/collectRefs.js';
+import collectRefs from 'web-component-refs';
 import emptyNode from '../../util/emptyNode.js';
 
 // components

@@ -1,4 +1,4 @@
-import collectRefs from '../../util/collectRefs.js';
+import collectRefs from 'web-component-refs';
 import emptyNode from '../../util/emptyNode.js';
 import emitter from '../../util/emitter.js';
 import search from '../../services/search.js';
@@ -47,9 +47,9 @@ class SearchView extends HTMLElement {
 
     if (persistData !== null) {
       this.searchTitle = persistData.searchTitle;
-      this.totalResults = persistData.total_results;
-      this.noResults = persistData.noResults;
+      this.totalResults = persistData.totalResults;
       this.results = persistData.results;
+      this.pageResults = persistData.pageResults;
 
       this.refs.message.innerHTML = `<em>Search results for &laquo;${ this.searchTitle }&raquo;</em>`;
       this.appendResults(this.results);
@@ -79,7 +79,7 @@ class SearchView extends HTMLElement {
       totalResults: this.totalResults,
       results: this.results,
       pageResults: this.pageResults
-    }
+    };
 
     // save data for back action
     sessionStorage.setItem('searchData', JSON.stringify(persistData));

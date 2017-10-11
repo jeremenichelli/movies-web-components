@@ -1,4 +1,4 @@
-import collectRefs from '../../util/collectRefs.js';
+import collectRefs from 'web-component-refs';
 import svgs from '../../util/svgs.js'
 
 // styles
@@ -24,12 +24,12 @@ class AppIcon extends HTMLElement {
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    // get refs
+    collectRefs.call(this);
   }
 
   connectedCallback() {
-    // get refs
-    collectRefs.call(this);
-
     if (this.hasAttribute('type') === true) {
       this.refs.svg.innerHTML = svgs[ this.getAttribute('type') ];
     }

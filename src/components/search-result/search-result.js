@@ -1,4 +1,4 @@
-import collectRefs from '../../util/collectRefs.js';
+import collectRefs from 'web-component-refs';
 import router from '../../util/router.js';
 
 // styles

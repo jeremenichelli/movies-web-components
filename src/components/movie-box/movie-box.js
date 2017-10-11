@@ -1,4 +1,4 @@
-import collectRefs from '../../util/collectRefs.js';
+import collectRefs from 'web-component-refs';
 import emitter from '../../util/emitter.js';
 import getMovie from '../../services/movie.js';
 
