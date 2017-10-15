@@ -7,9 +7,9 @@ Web app to explore movies built using web components.
 
 Install dependencies by running `npm install`.
 
-Start development server and bundling with `npm start`
+Start development server and bundling with `npm start`.
 
-There's no polyfill for web components currently, so the app only works in Chrome.
+The web components polyfill is not included so currently the project only works in Chrome.
 
 
 ### Reading
